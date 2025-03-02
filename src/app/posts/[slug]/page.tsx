@@ -52,13 +52,38 @@ export async function generateMetadata(props: Params): Promise<Metadata> {
     return notFound();
   }
 
-  const title = `${post.title} | Next.js Blog Example with ${CMS_NAME}`;
+  const title = `${post.title} | ${CMS_NAME}`;
+  const description = post.excerpt;
 
   return {
     title,
+    description,
     openGraph: {
       title,
-      images: [post.ogImage.url],
+      description,
+      type: 'article',
+      publishedTime: post.date,
+      images: [
+        {
+          url: post.ogImage.url,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        }
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [
+        {
+          url: post.ogImage.url,
+          alt: post.title,
+          width: 1200,
+          height: 630,
+        }
+      ],
     },
   };
 }

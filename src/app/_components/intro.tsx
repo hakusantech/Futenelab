@@ -68,9 +68,10 @@ export const Intro = () => {
         <BackgroundCurves className="absolute inset-0" />
       </div>
 
-      {/* 装飾用の薄い背景テキスト（中～大画面のみ表示） */}
-      <div className="hidden md:block absolute left-4 bottom-4 text-neutral-800 select-none font-bold text-[8rem] md:text-[12rem] tracking-[-0.5rem] opacity-20 leading-none">
-        FUTENE LAB
+      {/* 装飾用の背景テキスト（スマホでは改行表示） */}
+      <div className="absolute left-4 bottom-4 text-neutral-800 select-none font-bold text-[4rem] sm:text-[6rem] md:text-[12rem] tracking-[-0.25rem] md:tracking-[-0.5rem] opacity-20 leading-none">
+        <span className="block sm:inline">FUTENE</span>{" "}
+        <span className="block sm:inline">LAB</span>
       </div>
 
       

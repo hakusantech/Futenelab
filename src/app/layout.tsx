@@ -20,7 +20,14 @@ export const metadata: Metadata = {
     description: `東大発スタートアップFutene Web Designが運営するテックメディア。スタートアップ向けホームページ制作、Web開発、AI活用に関する最新情報を発信します。`,
     url: 'https://futene-tech-lab.vercel.app',
     siteName: CMS_NAME,
-    images: [HOME_OG_IMAGE_URL],
+    images: [
+      {
+        url: HOME_OG_IMAGE_URL,
+        width: 1200,
+        height: 630,
+        alt: 'Futene Tech Lab',
+      }
+    ],
     locale: 'ja_JP',
     type: 'website',
   },
@@ -28,7 +35,14 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: `${CMS_NAME} - スタートアップ・Web開発・AI情報メディア`,
     description: `東大発スタートアップFutene Web Designが運営するテックメディア。スタートアップ向けホームページ制作、Web開発、AI活用に関する最新情報を発信します。`,
-    images: [HOME_OG_IMAGE_URL],
+    images: [
+      {
+        url: HOME_OG_IMAGE_URL,
+        alt: 'Futene Tech Lab',
+        width: 1200,
+        height: 630,
+      }
+    ],
   },
   alternates: {
     canonical: 'https://futene-tech-lab.vercel.app',
