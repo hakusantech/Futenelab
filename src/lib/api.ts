@@ -26,3 +26,30 @@ export function getAllPosts(): Post[] {
     .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
   return posts;
 }
+
+// カテゴリでフィルタリングした記事を取得する関数
+export function getPostsByCategory(category: string): Post[] {
+  const allPosts = getAllPosts();
+  
+  // カテゴリが指定されていない場合はすべての記事を返す
+  if (!category) {
+    return allPosts;
+  }
+  
+  // カテゴリでフィルタリング
+  return allPosts.filter((post) => post.category === category);
+}
+
+// 記事に含まれるすべてのカテゴリを取得する関数
+export function getAllCategories(): string[] {
+  const posts = getAllPosts();
+  const categories = new Set<string>();
+  
+  posts.forEach((post) => {
+    if (post.category) {
+      categories.add(post.category);
+    }
+  });
+  
+  return Array.from(categories);
+}

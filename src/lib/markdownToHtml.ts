@@ -1,7 +1,7 @@
-import { remark } from "remark";
-import html from "remark-html";
+import markdownHtml from "zenn-markdown-html";
 
 export default async function markdownToHtml(markdown: string) {
-  const result = await remark().use(html).process(markdown);
-  return result.toString();
+  // Zenn の記法を使用して Markdown を HTML に変換
+  const result = markdownHtml(markdown);
+  return result;
 }

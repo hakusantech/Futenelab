@@ -37,6 +37,11 @@ const config: Config = {
         sm: "0 5px 10px rgba(0, 0, 0, 0.12)",
         md: "0 8px 30px rgba(0, 0, 0, 0.12)",
       },
+      perspective: {
+        'none': 'none',
+        '500': '500px',
+        '1000': '1000px',
+      },
     },
   },
   plugins: [],
