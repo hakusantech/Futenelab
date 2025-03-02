@@ -18,10 +18,8 @@ export default function Index() {
   // ピックアップ記事（featured: trueの記事を取得）
   const pickupPosts = allPosts.filter(post => post.featured).slice(0, 3);
   
-  // 最新記事（ピックアップ記事を除外）
-  const latestPosts = allPosts
-    .filter(post => !post.featured)
-    .slice(0, 6);
+  // 最新記事（ピックアップ記事との重複を許可）
+  const latestPosts = allPosts.slice(0, 6);
 
   return (
     <main className="bg-white">
