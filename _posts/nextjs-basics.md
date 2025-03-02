@@ -96,6 +96,11 @@ export async function getStaticProps({ params }) {
 }
 ```
 
+$$
+e^{i\theta} = \cos\theta + i\sin\theta
+$$
+
+
 ## まとめ
 
 Next.js は React アプリケーションを構築するための強力なフレームワークです。ファイルベースのルーティング、サーバーサイドレンダリング、静的サイト生成などの機能により、高速で SEO に強いウェブアプリケーションを簡単に構築できます。

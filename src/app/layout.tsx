@@ -74,6 +74,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#ffffff" />
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" />
+        <script src="https://embed.zenn.studio/js/listen-embed-event.js"></script>
       </head>
       <body
         className={cn(inter.className, "bg-white text-gray-800")}
