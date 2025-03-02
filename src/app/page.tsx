@@ -12,25 +12,34 @@ export const metadata: Metadata = {
   title: `${CMS_NAME} - スタートアップ・ホームページ制作・Web開発メディア`,
   description: `東大発スタートアップFutene Web Designが運営するテックメディア。スタートアップ向けホームページ制作、Web開発、AI活用に関する最新情報を発信します。`,
   keywords: ["スタートアップ", "ホームページ制作", "Web開発", "AI", "テックブログ", "コスパ", "東大発","青森"],
+  metadataBase: new URL('https://app.futene-web-design.jp'),
   openGraph: {
     title: `${CMS_NAME} - スタートアップ・ホームページ制作・Web開発メディア`,
     description: `東大発スタートアップFutene Web Designが運営するテックメディア。スタートアップ向けホームページ制作、Web開発、AI活用に関する最新情報を発信します。`,
-    url: "https://app.futene-web-design.jp/", // あなたのサイトのURLに置き換えてください
+    url: 'https://app.futene-web-design.jp',
     siteName: "Futene Web Design",
     images: [
       {
-        url: "/top.png", // public直下の画像のURLに修正
+        url: '/top.png',
         width: 1200,
         height: 630,
+        alt: 'Futene Tech Lab',
+        type: 'image/png',
       },
     ],
-    type: "website",
+    locale: 'ja_JP',
+    type: 'website',
   },
   twitter: {
-    card: "summary_large_image",
+    card: 'summary_large_image',
     title: `${CMS_NAME} - スタートアップ・ホームページ制作・Web開発メディア`,
     description: `東大発スタートアップFutene Web Designが運営するテックメディア。スタートアップ向けホームページ制作、Web開発、AI活用に関する最新情報を発信します。`,
-    images: ["/top.png"], // public直下の画像のURLに修正
+    site: '@SaitoMai383768',
+    creator: '@SaitoMai383768',
+    images: {
+      url: '/top.png',
+      alt: 'Futene Tech Lab',
+    },
   },
 };
 
