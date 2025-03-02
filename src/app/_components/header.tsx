@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 const MENU_ITEMS = [
   { text: "Home", href: "/" },
   { text: "Articles", href: "/posts" },
-  { text: "Contact", href: "https://futene-web-design-dev.vercel.app/contact", external: true },
+  { text: "Contact", href: "https://www.futene-web-design.jp/contact", external: true },
 ];
 
 export function Header() {
