@@ -12,7 +12,7 @@ Next.js と Markdown を使用した静的生成テックブログです。Tailw
 - **タイプセーフ**: TypeScript を使用した型安全な開発環境
 
 ## 使い方
-ru
+
 ### インストール
 
 ```bash
@@ -35,6 +35,32 @@ npm run dev
 npm run build
 npm run start
 ```
+
+### 記事のピックアップ設定
+
+記事をトップページのピックアップセクションに表示するには、記事のfrontmatterに`featured: true`を追加します。
+
+```markdown
+---
+title: "記事のタイトル"
+excerpt: "記事の抜粋"
+coverImage: "/assets/blog/example/cover.jpg"
+date: "2024-03-01T12:00:00.000Z"
+author:
+  name: "著者名"
+  picture: "/assets/blog/authors/profile.jpg"
+ogImage:
+  url: "/assets/blog/example/cover.jpg"
+category: "frontend"
+featured: true
+---
+```
+
+ピックアップ記事は以下のように表示されます：
+- トップページの「ピックアップ」セクションに表示（最大3件）
+- 最新記事セクションにも通常通り表示
+
+ピックアップから外すには、`featured: true`を削除するか`featured: false`に設定します。
 
 ## 記事の作成と管理
 
