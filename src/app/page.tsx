@@ -14,8 +14,14 @@ export const metadata: Metadata = {
 
 export default function Index() {
   const allPosts = getAllPosts();
-  const pickupPosts = allPosts.slice(0, 3);
-  const latestPosts = allPosts.slice(0, 6);
+  
+  // ピックアップ記事（featured: trueの記事を取得）
+  const pickupPosts = allPosts.filter(post => post.featured).slice(0, 3);
+  
+  // 最新記事（ピックアップ記事を除外）
+  const latestPosts = allPosts
+    .filter(post => !post.featured)
+    .slice(0, 6);
 
   return (
     <main className="bg-white">

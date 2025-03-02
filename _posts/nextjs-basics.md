@@ -9,6 +9,7 @@ author:
 ogImage:
   url: "/assets/blog/nextjs-basics/cover.jpg"
 category: "frontend"
+featured: true
 ---
 
 # Next.js の基本
