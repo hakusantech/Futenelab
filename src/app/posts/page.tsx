@@ -4,11 +4,41 @@ import { getAllPosts } from "@/lib/api";
 import Link from "next/link";
 import { CATEGORIES } from "@/lib/categories";
 import { CMS_NAME } from "@/lib/constants";
+import { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: `記事一覧 | ${CMS_NAME} - スタートアップ・ホームページ制作・Web開発メディア`,
   description: `東大発スタートアップFutene Web Designが運営するテックメディア。スタートアップ向けホームページ制作、Web開発、AI活用に関する最新記事一覧です。`,
   keywords: ["スタートアップ", "ホームページ制作", "Web開発", "AI", "テックブログ", "記事一覧", "Futene"],
+  metadataBase: new URL('https://app.futene-web-design.jp'),
+  openGraph: {
+    title: `記事一覧 | ${CMS_NAME} - スタートアップ・ホームページ制作・Web開発メディア`,
+    description: `東大発スタートアップFutene Web Designが運営するテックメディア。スタートアップ向けホームページ制作、Web開発、AI活用に関する最新記事一覧です。`,
+    url: '/posts',
+    siteName: "Futene Web Design",
+    images: [
+      {
+        url: '/top.png',
+        width: 1200,
+        height: 630,
+        alt: 'Futene Tech Lab',
+        type: 'image/png',
+      },
+    ],
+    locale: 'ja_JP',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `記事一覧 | ${CMS_NAME} - スタートアップ・ホームページ制作・Web開発メディア`,
+    description: `東大発スタートアップFutene Web Designが運営するテックメディア。スタートアップ向けホームページ制作、Web開発、AI活用に関する最新記事一覧です。`,
+    site: '@SaitoMai383768',
+    creator: '@SaitoMai383768',
+    images: {
+      url: '/top.png',
+      alt: 'Futene Tech Lab',
+    },
+  },
 };
 
 export default function PostsPage() {

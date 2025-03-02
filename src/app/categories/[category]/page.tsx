@@ -4,6 +4,7 @@ import { getAllCategoryIds, getCategoryName } from "@/lib/categories";
 import { getPostsByCategory } from "@/lib/api";
 import Link from "next/link";
 import { Metadata } from "next";
+import { CMS_NAME } from "@/lib/constants";
 
 type CategoryParams = {
   category: string;
@@ -15,10 +16,41 @@ export async function generateMetadata({
   params: CategoryParams 
 }): Promise<Metadata> {
   const categoryName = getCategoryName(params.category);
+  const title = `${categoryName}の記事一覧 | ${CMS_NAME}`;
+  const description = `${CMS_NAME}の${categoryName}に関する記事一覧です。スタートアップ向けホームページ制作、Web開発、AI活用に関する情報をご覧いただけます。`;
   
   return {
-    title: `${categoryName}の記事一覧 | Futene Tech Lab`,
-    description: `Futene Tech Labの${categoryName}に関する記事一覧です。`,
+    title,
+    description,
+    metadataBase: new URL('https://app.futene-web-design.jp'),
+    openGraph: {
+      title,
+      description,
+      url: `/categories/${params.category}`,
+      siteName: "Futene Web Design",
+      images: [
+        {
+          url: '/top.png',
+          width: 1200,
+          height: 630,
+          alt: `${categoryName}の記事一覧 | ${CMS_NAME}`,
+          type: 'image/png',
+        },
+      ],
+      locale: 'ja_JP',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      site: '@SaitoMai383768',
+      creator: '@SaitoMai383768',
+      images: {
+        url: '/top.png',
+        alt: `${categoryName}の記事一覧 | ${CMS_NAME}`,
+      },
+    },
   };
 }
 

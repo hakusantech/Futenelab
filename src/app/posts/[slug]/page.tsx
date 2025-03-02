@@ -58,6 +58,7 @@ export async function generateMetadata(props: Params): Promise<Metadata> {
   return {
     title,
     description,
+    metadataBase: new URL('https://app.futene-web-design.jp'),
     openGraph: {
       title,
       description,
