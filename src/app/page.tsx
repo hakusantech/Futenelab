@@ -7,10 +7,31 @@ import { Metadata } from "next";
 import { CMS_NAME } from "@/lib/constants";
 import Intro from "@/app/_components/intro";
 
+
 export const metadata: Metadata = {
   title: `${CMS_NAME} - スタートアップ・ホームページ制作・Web開発メディア`,
   description: `東大発スタートアップFutene Web Designが運営するテックメディア。スタートアップ向けホームページ制作、Web開発、AI活用に関する最新情報を発信します。`,
-  keywords: ["スタートアップ", "ホームページ制作", "Web開発", "AI", "テックブログ", "Futene", "東大発"],
+  keywords: ["スタートアップ", "ホームページ制作", "Web開発", "AI", "テックブログ", "コスパ", "東大発","青森"],
+  openGraph: {
+    title: `${CMS_NAME} - スタートアップ・ホームページ制作・Web開発メディア`,
+    description: `東大発スタートアップFutene Web Designが運営するテックメディア。スタートアップ向けホームページ制作、Web開発、AI活用に関する最新情報を発信します。`,
+    url: "https://app.futene-web-design.jp/", // あなたのサイトのURLに置き換えてください
+    siteName: "Futene Web Design",
+    images: [
+      {
+        url: "top.png", // プレビューに使いたい画像のURL
+        width: 1200,
+        height: 630,
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${CMS_NAME} - スタートアップ・ホームページ制作・Web開発メディア`,
+    description: `東大発スタートアップFutene Web Designが運営するテックメディア。スタートアップ向けホームページ制作、Web開発、AI活用に関する最新情報を発信します。`,
+    images: ["top.png"], // 同じ画像または別の画像を指定できます
+  },
 };
 
 export default function Index() {

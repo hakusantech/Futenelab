@@ -38,23 +38,27 @@ export const Intro = () => {
   const scrollIndicatorRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    gsap.fromTo(
-      catchphraseRef.current,
-      { opacity: 0, x: -100 },
-      { opacity: 1, x: 0, duration: 1, delay: 0.5, ease: "power2.out" }
-    );
+    if (catchphraseRef.current) {
+      gsap.fromTo(
+        catchphraseRef.current,
+        { opacity: 0, x: -100 },
+        { opacity: 1, x: 0, duration: 1, delay: 0.5, ease: "power2.out" }
+      );
+    }
 
-    gsap.to(scrollIndicatorRef.current, {
-      y: 15,
-      duration: 1.5,
-      repeat: -1,
-      yoyo: true,
-      ease: "power1.inOut",
-    });
+    if (scrollIndicatorRef.current) {
+      gsap.to(scrollIndicatorRef.current, {
+        y: 15,
+        duration: 1.5,
+        repeat: -1,
+        yoyo: true,
+        ease: "power1.inOut",
+      });
+    }
   }, []);
 
   return (
-    <section className="relative flex items-center justify-center h-screen overflow-hidden bg-neutral-950">
+    <section className="relative flex flex-col items-center justify-center h-screen overflow-hidden bg-neutral-950 px-4 md:px-8">
       <HeroShader />
 
       {/* 背景アニメーション */}
@@ -64,16 +68,26 @@ export const Intro = () => {
         <BackgroundCurves className="absolute inset-0" />
       </div>
 
-      {/* 装飾用の薄い背景テキスト */}
-      <div className="absolute left-4 bottom-4 text-neutral-800 select-none font-bold text-[12rem] md:text-[18rem] tracking-[-1rem] opacity-20 leading-none">
+      {/* 装飾用の薄い背景テキスト（中～大画面のみ表示） */}
+      <div className="hidden md:block absolute left-4 bottom-4 text-neutral-800 select-none font-bold text-[8rem] md:text-[12rem] tracking-[-0.5rem] opacity-20 leading-none">
         FUTENE LAB
       </div>
 
-      
-ロールインジケーター（中央下部） */
+      {/* メインコンテンツ */}
+      <div className="relative z-10 text-center">
+        <p
+          ref={catchphraseRef}
+          className="text-white text-2xl sm:text-3xl md:text-4xl font-semibold mb-8"
+        >
+          <Strong delay={300}>Innovate</Strong> your digital experience.
+        </p>
+        {/* TextAnimator等、必要なコンテンツをここに追加可能 */}
+      </div>
+
+      {/* ロールインジケーター（中央下部） */}
       <div
         ref={scrollIndicatorRef}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-gray-400"
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-gray-400"
       >
         <svg
           width="24"
