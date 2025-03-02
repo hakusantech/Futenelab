@@ -80,7 +80,7 @@ export default function RootLayout({
         className={cn(inter.className, "bg-white text-gray-800")}
       >
         <Header />
-        <div className="min-h-screen pt-16">{children}</div>
+        <div className="min-h-screen">{children}</div>
         <Footer />
       </body>
     </html>

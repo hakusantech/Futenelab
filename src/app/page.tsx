@@ -5,6 +5,7 @@ import Link from "next/link";
 import { CATEGORIES } from "@/lib/categories";
 import { Metadata } from "next";
 import { CMS_NAME } from "@/lib/constants";
+import Intro from "@/app/_components/intro";
 
 export const metadata: Metadata = {
   title: `${CMS_NAME} - スタートアップ・ホームページ制作・Web開発メディア`,
@@ -23,8 +24,9 @@ export default function Index() {
 
   return (
     <main className="bg-white">
+      <Intro />
       {/* Category Navigation */}
-      <section className="bg-white py-8 pt-24">
+      <section className="bg-white py-8">
         <Container>
           <h2 className="text-3xl font-bold text-gray-800 mb-6">カテゴリ</h2>
           <div className="flex flex-wrap gap-4">

@@ -22,6 +22,7 @@ export function Header() {
   const isExpanded = useRef<boolean>(true);
   const pathname = usePathname();
   const animationsSetupDone = useRef<boolean>(false);
+  const isHomePage = pathname === '/';
 
   useEffect(() => {
     // 現在のパスに基づいてアクティブなメニュー項目を設定
@@ -215,13 +216,31 @@ export function Header() {
       isScrollingDown = currentScrollY > lastScrollY;
       lastScrollY = currentScrollY;
 
-      // ヘッダーの背景色を調整
-      if (currentScrollY > 50) {
+      // ホームページの場合の特別な処理
+      if (isHomePage) {
+        const viewportHeight = window.innerHeight;
+        
+        // Introセクションが表示されている間は透明背景と白文字に
+        if (currentScrollY < viewportHeight * 0.8) {
+          headerRef.current.classList.remove('bg-white', 'dark:bg-slate-900', 'shadow-md');
+          headerRef.current.classList.add('bg-transparent');
+          // テキストを白に
+          headerRef.current.classList.add('text-white');
+          headerRef.current.classList.remove('text-gray-800');
+        } else {
+          // Introセクション以外では白背景と黒文字に
+          headerRef.current.classList.add('bg-white', 'dark:bg-slate-900', 'shadow-md');
+          headerRef.current.classList.remove('bg-transparent');
+          // テキストを黒に
+          headerRef.current.classList.remove('text-white');
+          headerRef.current.classList.add('text-gray-800');
+        }
+      } else {
+        // 通常のページの場合は常に白背景と黒文字
         headerRef.current.classList.add('bg-white', 'dark:bg-slate-900', 'shadow-md');
         headerRef.current.classList.remove('bg-transparent');
-      } else {
-        headerRef.current.classList.remove('bg-white', 'dark:bg-slate-900', 'shadow-md');
-        headerRef.current.classList.add('bg-transparent');
+        headerRef.current.classList.remove('text-white');
+        headerRef.current.classList.add('text-gray-800');
       }
 
       // スクロール中は処理をスキップ
@@ -312,77 +331,70 @@ export function Header() {
   return (
     <header
       ref={headerRef}
-      className="fixed top-0 left-0 w-full px-4 md:px-8 py-4 z-50 flex justify-between items-center transition-all duration-300 bg-white shadow-sm"
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        isHomePage ? 'bg-transparent text-white' : 'bg-white text-gray-800 shadow-md'
+      }`}
     >
-      <div 
-        ref={logoRef}
-        className="flex items-center"
-      >
-        <Link href="/" className="text-xl md:text-2xl font-bold text-gray-900">
-          Futene Tech Lab
-        </Link>
+      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+        <div
+          ref={logoRef}
+          className="text-xl font-bold relative z-10"
+        >
+          <Link href="/">Futene Lab</Link>
+        </div>
+
+        <nav ref={navRef} className="relative">
+          <div className="flex space-x-8">
+            {MENU_ITEMS.map((item, index) => (
+              item.external ? (
+                <a
+                  key={item.text}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`relative py-1 font-medium transition-colors duration-200 hover:text-blue-600 ${
+                    pathname === item.href ? "text-blue-600" : ""
+                  }`}
+                >
+                  <span
+                    ref={(el: HTMLSpanElement | null): void => {
+                      itemRefs.current[index] = el;
+                    }}
+                    className="relative"
+                  >
+                    {item.text}
+                  </span>
+                </a>
+              ) : (
+                <Link
+                  key={item.text}
+                  href={item.href}
+                  className={`relative py-1 font-medium transition-colors duration-200 hover:text-blue-600 ${
+                    pathname === item.href ||
+                    (pathname.startsWith("/posts/") && item.href === "/posts")
+                      ? "text-blue-600"
+                      : ""
+                  }`}
+                >
+                  <span
+                    ref={(el: HTMLSpanElement | null): void => {
+                      itemRefs.current[index] = el;
+                    }}
+                    className="relative"
+                  >
+                    {item.text}
+                  </span>
+                </Link>
+              )
+            ))}
+            <div
+              ref={dotRef}
+              className="absolute bottom-0 h-0.5 w-5 bg-blue-600 rounded-full transform -translate-x-1/2 transition-all duration-300"
+              style={{ left: "0px" }}
+            />
+          </div>
+        </nav>
       </div>
-      
-      <nav
-        ref={navRef}
-        className="relative"
-      >
-        <ul className="flex space-x-1 md:space-x-6 items-center text-sm md:text-base">
-          <div
-            ref={dotRef}
-            className="absolute bottom-0 h-1 w-1 bg-blue-500 rounded-full"
-            style={{ left: 0, transformOrigin: "center" }}
-          />
-          
-          {MENU_ITEMS.map((item, index) => {
-            const isActive = 
-              !item.external && (
-                item.href === pathname || 
-                (pathname.startsWith('/posts/') && item.href === '/posts')
-              );
-              
-            return (
-              <li key={item.text} className="relative py-2">
-                {item.external ? (
-                  <a
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="relative inline-block transition-colors py-1 px-1 text-gray-700 hover:text-blue-600"
-                  >
-                    <span
-                      ref={(el) => {
-                        itemRefs.current[index] = el;
-                      }}
-                      className="inline-block perspective-500"
-                    >
-                      {item.text}
-                    </span>
-                  </a>
-                ) : (
-                  <Link
-                    href={item.href}
-                    className={`relative inline-block transition-colors py-1 px-1 ${
-                      isActive 
-                        ? 'text-blue-600 font-medium' 
-                        : 'text-gray-700 hover:text-blue-600'
-                    }`}
-                  >
-                    <span
-                      ref={(el) => {
-                        itemRefs.current[index] = el;
-                      }}
-                      className="inline-block perspective-500"
-                    >
-                      {item.text}
-                    </span>
-                  </Link>
-                )}
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
     </header>
   );
 }
