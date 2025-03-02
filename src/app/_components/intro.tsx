@@ -73,16 +73,7 @@ export const Intro = () => {
         FUTENE LAB
       </div>
 
-      {/* メインコンテンツ */}
-      <div className="relative z-10 text-center">
-        <p
-          ref={catchphraseRef}
-          className="text-white text-2xl sm:text-3xl md:text-4xl font-semibold mb-8"
-        >
-          <Strong delay={300}>Innovate</Strong> your digital experience.
-        </p>
-        {/* TextAnimator等、必要なコンテンツをここに追加可能 */}
-      </div>
+      
 
       {/* ロールインジケーター（中央下部） */}
       <div

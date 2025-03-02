@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     siteName: "Futene Web Design",
     images: [
       {
-        url: "top.png", // プレビューに使いたい画像のURL
+        url: "/top.png", // public直下の画像のURLに修正
         width: 1200,
         height: 630,
       },
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${CMS_NAME} - スタートアップ・ホームページ制作・Web開発メディア`,
     description: `東大発スタートアップFutene Web Designが運営するテックメディア。スタートアップ向けホームページ制作、Web開発、AI活用に関する最新情報を発信します。`,
-    images: ["top.png"], // 同じ画像または別の画像を指定できます
+    images: ["/top.png"], // public直下の画像のURLに修正
   },
 };
 
