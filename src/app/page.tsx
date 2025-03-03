@@ -55,57 +55,116 @@ export default function Index() {
   return (
     <main className="bg-white">
       <Intro />
-      {/* Category Navigation */}
-      <section className="bg-white py-8">
-        <Container>
-          <h2 className="text-3xl font-bold text-gray-800 mb-6">カテゴリ</h2>
-          <div className="flex flex-wrap gap-4">
-            {CATEGORIES.map((category) => (
-              <Link
-                key={category.id}
-                href={`/categories/${category.id}`}
-                className="px-6 py-3 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors text-gray-800 font-medium"
-              >
-                {category.name}
-              </Link>
-            ))}
-          </div>
-        </Container>
-      </section>
       
-      {/* Pickup記事 */}
-      <section className="bg-white py-12">
+      {/* ピックアップとカテゴリを横並びに配置 */}
+      <section className="bg-white py-16">
         <Container>
-          <div className="flex justify-between items-center mb-8">
-            <h2 className="text-3xl font-bold text-gray-800">ピックアップ</h2>
-            <Link href="/posts" className="text-blue-600 hover:underline">
-              すべて見る →
-            </Link>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {pickupPosts.map((post) => (
-              <ArticleCard
-                key={post.slug}
-                title={post.title}
-                coverImage={post.coverImage}
-                date={post.date}
-                author={post.author}
-                slug={post.slug}
-                excerpt={post.excerpt}
-                category={post.category}
-              />
-            ))}
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
+            {/* ピックアップ記事（左側3/4） */}
+            <div className="lg:col-span-3">
+              <div className="flex justify-between items-end mb-10">
+                <h2 className="text-3xl font-bold text-gray-800 tracking-tight">
+                  <span className="text-sm font-medium text-blue-600 block mb-2 uppercase tracking-wider">Selected Content</span>
+                  <span className="relative pb-2 inline-block">
+                    FEATURED
+                    <span className="absolute bottom-0 left-0 w-1/3 h-1 bg-blue-600"></span>
+                  </span>
+                </h2>
+                <Link href="/posts" className="text-blue-600 hover:text-blue-800 transition-colors duration-200 group flex items-center">
+                  <span className="mr-1">すべて見る</span>
+                  <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    className="h-4 w-4 transform group-hover:translate-x-1 transition-transform duration-200" 
+                    viewBox="0 0 20 20" 
+                    fill="currentColor"
+                  >
+                    <path 
+                      fillRule="evenodd" 
+                      d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" 
+                      clipRule="evenodd" 
+                    />
+                  </svg>
+                </Link>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {pickupPosts.map((post) => (
+                  <ArticleCard
+                    key={post.slug}
+                    title={post.title}
+                    coverImage={post.coverImage}
+                    date={post.date}
+                    author={post.author}
+                    slug={post.slug}
+                    excerpt={post.excerpt}
+                    category={post.category}
+                    compact
+                  />
+                ))}
+              </div>
+            </div>
+            
+            {/* カテゴリ（右側1/4） */}
+            <div className="lg:max-w-[240px] lg:border-l lg:border-gray-100 lg:pl-8">
+              <h2 className="text-xl font-bold text-gray-800 mb-6 tracking-tight">
+                <span className="text-xs font-medium text-blue-600 block mb-2 uppercase tracking-wider">Topics</span>
+                <span className="relative pb-2 inline-block">
+                  CATEGORIES
+                  <span className="absolute bottom-0 left-0 w-1/3 h-1 bg-blue-600"></span>
+                </span>
+              </h2>
+              <div className="flex flex-col space-y-3">
+                {CATEGORIES.map((category) => (
+                  <Link
+                    key={category.id}
+                    href={`/categories/${category.id}`}
+                    className="px-4 py-3 bg-white border-l-2 border-transparent hover:border-blue-600 hover:bg-blue-50/50 transition-all duration-200 text-gray-700 text-sm font-medium w-full flex items-center"
+                  >
+                    <span className="flex-1">{category.name}</span>
+                    <svg 
+                      xmlns="http://www.w3.org/2000/svg" 
+                      className="h-4 w-4 text-gray-400" 
+                      viewBox="0 0 20 20" 
+                      fill="currentColor"
+                    >
+                      <path 
+                        fillRule="evenodd" 
+                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" 
+                        clipRule="evenodd" 
+                      />
+                    </svg>
+                  </Link>
+                ))}
+              </div>
+            </div>
           </div>
         </Container>
       </section>
       
       {/* 最新記事 */}
-      <section className="bg-gray-50 py-12">
+      <section className="bg-gray-50 py-16">
         <Container>
-          <div className="flex justify-between items-center mb-8">
-            <h2 className="text-3xl font-bold text-gray-800">最新記事</h2>
-            <Link href="/posts" className="text-blue-600 hover:underline">
-              すべて見る →
+          <div className="flex justify-between items-end mb-10">
+            <h2 className="text-3xl font-bold text-gray-800 tracking-tight">
+              <span className="text-sm font-medium text-blue-600 block mb-2 uppercase tracking-wider">Fresh Content</span>
+              <span className="relative pb-2 inline-block">
+                LATEST ARTICLES
+                <span className="absolute bottom-0 left-0 w-1/3 h-1 bg-blue-600"></span>
+              </span>
+            </h2>
+            <Link href="/posts" className="text-blue-600 hover:text-blue-800 transition-colors duration-200 group flex items-center">
+              <span className="mr-1">すべて見る</span>
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                className="h-4 w-4 transform group-hover:translate-x-1 transition-transform duration-200" 
+                viewBox="0 0 20 20" 
+                fill="currentColor"
+              >
+                <path 
+                  fillRule="evenodd" 
+                  d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" 
+                  clipRule="evenodd" 
+                />
+              </svg>
             </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
