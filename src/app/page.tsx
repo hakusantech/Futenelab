@@ -116,7 +116,7 @@ export default function Index() {
                 {CATEGORIES.map((category) => (
                   <Link
                     key={category.id}
-                    href={`/categories/${category.id}`}
+                    href={`/posts?category=${category.id}`}
                     className="px-4 py-3 bg-white border-l-2 border-transparent hover:border-blue-600 hover:bg-blue-50/50 transition-all duration-200 text-gray-700 text-sm font-medium w-full flex items-center"
                   >
                     <span className="flex-1">{category.name}</span>

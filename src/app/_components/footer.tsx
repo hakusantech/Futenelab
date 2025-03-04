@@ -31,7 +31,7 @@ export function Footer() {
               {CATEGORIES.map((category) => (
                 <li key={category.id}>
                   <Link 
-                    href={`/categories/${category.id}`} 
+                    href={`/posts?category=${category.id}`} 
                     className="text-gray-600 hover:text-blue-500"
                   >
                     {category.name}

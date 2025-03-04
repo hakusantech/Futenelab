@@ -58,7 +58,7 @@ export default function ArticleCard({
     e.preventDefault();
     e.stopPropagation();
     if (category) {
-      router.push(`/categories/${category}`);
+      router.push(`/posts?category=${category}`);
     }
   };
   
