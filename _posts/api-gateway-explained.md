@@ -2,7 +2,7 @@
 title: "RESTからGraphQLまでを見渡す：API設計のための基本概念"
 excerpt: "REST、gRPC、GraphQLなどの通信モデルを比較しながら、API仕様化やバージョン管理、パフォーマンス、セキュリティを多角的に解説する記事です。複数のアプローチを理解し、最適なAPIアーキテクチャをデザインするためのヒントを提供します。"
 coverImage: "/assets/blog/api-gateway/cover.jpg"
-date: "2024-05-01T12:00:00.000Z"
+date: "2025-03-04T12:00:00.000Z"
 author:
   name: "Saito Mai"
   picture: "/assets/blog/authors/saitomai.jpg"
